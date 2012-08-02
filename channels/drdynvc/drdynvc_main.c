@@ -287,23 +287,26 @@ static void drdynvc_process_receive(rdpSvcPlugin* plugin, STREAM* s)
 	Sp = (value & 0x0c) >> 2;
 	cbChId = (value & 0x03) >> 0;
 
-	DEBUG_DVC("Cmd=0x%x", Cmd);
-
 	switch (Cmd)
 	{
 		case CAPABILITY_REQUEST_PDU:
+            DEBUG_DVC("Cmd=%s (0x%x)", "CAPABILITY_REQUEST_PDU", Cmd);
 			drdynvc_process_capability_request(drdynvc, Sp, cbChId, s);
 			break;
 		case CREATE_REQUEST_PDU:
+            DEBUG_DVC("Cmd=%s (0x%x)", "CREATE_REQUEST_PDU", Cmd);
 			drdynvc_process_create_request(drdynvc, Sp, cbChId, s);
 			break;
 		case DATA_FIRST_PDU:
+            DEBUG_DVC("Cmd=%s (0x%x)", "DATA_FIRST_PDU", Cmd);
 			drdynvc_process_data_first(drdynvc, Sp, cbChId, s);
 			break;
 		case DATA_PDU:
+            DEBUG_DVC("Cmd=%s (0x%x)", "DATA_PDU", Cmd);
 			drdynvc_process_data(drdynvc, Sp, cbChId, s);
 			break;
 		case CLOSE_REQUEST_PDU:
+            DEBUG_DVC("Cmd=%s (0x%x)", "CLOSE_REQUEST_PDU", Cmd);
 			drdynvc_process_close_request(drdynvc, Sp, cbChId, s);
 			break;
 		default:

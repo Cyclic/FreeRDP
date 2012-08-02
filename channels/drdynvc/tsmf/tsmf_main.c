@@ -158,6 +158,8 @@ static int tsmf_on_data_received(IWTSVirtualChannelCallback* pChannelCallback,
 			switch (FunctionId)
 			{
 				case RIM_EXCHANGE_CAPABILITY_REQUEST:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_CAPABILITIES (0x%X) MessageId=0x%X FunctionId=RIM_EXCHANGE_CAPABILITY_REQUEST (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_rim_exchange_capability_request(&ifman);
 					break;
 
@@ -171,6 +173,8 @@ static int tsmf_on_data_received(IWTSVirtualChannelCallback* pChannelCallback,
 			switch (FunctionId)
 			{
 				case SET_CHANNEL_PARAMS:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=SET_CHANNEL_PARAMS (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					memcpy(callback->presentation_id, stream_get_tail(input), 16);
 					stream_seek(input, 16);
 					stream_read_uint32(input, callback->stream_id);
@@ -180,86 +184,128 @@ static int tsmf_on_data_received(IWTSVirtualChannelCallback* pChannelCallback,
 					break;
 
 				case EXCHANGE_CAPABILITIES_REQ:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=EXCHANGE_CAPABILITIES_REQ (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_exchange_capability_request(&ifman);
 					break;
 
 				case CHECK_FORMAT_SUPPORT_REQ:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=CHECK_FORMAT_SUPPORT_REQ (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_check_format_support_request(&ifman);
 					break;
 
 				case ON_NEW_PRESENTATION:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_NEW_PRESENTATION (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_new_presentation(&ifman);
 					break;
 
 				case ADD_STREAM:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ADD_STREAM (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_add_stream(&ifman);
 					break;
 
 				case SET_TOPOLOGY_REQ:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=SET_TOPOLOGY_REQ (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_set_topology_request(&ifman);
 					break;
 
 				case REMOVE_STREAM:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=REMOVE_STREAM (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_remove_stream(&ifman);
 					break;
 
 				case SHUTDOWN_PRESENTATION_REQ:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=SHUTDOWN_PRESENTATION_REQ (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_shutdown_presentation(&ifman);
 					break;
 
 				case ON_STREAM_VOLUME:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_STREAM_VOLUME (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_stream_volume(&ifman);
 					break;
 
 				case ON_CHANNEL_VOLUME:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_CHANNEL_VOLUME (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_channel_volume(&ifman);
 					break;
 
 				case SET_VIDEO_WINDOW:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=SET_VIDEO_WINDOW (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_set_video_window(&ifman);
 					break;
 
 				case UPDATE_GEOMETRY_INFO:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=UPDATE_GEOMETRY_INFO (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_update_geometry_info(&ifman);
 					break;
 
 				case SET_ALLOCATOR:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=SET_ALLOCATOR (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_set_allocator(&ifman);
 					break;
 
 				case NOTIFY_PREROLL:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=NOTIFY_PREROLL (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_notify_preroll(&ifman);
 					break;
 
 				case ON_SAMPLE:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_SAMPLE (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_sample(&ifman);
 					break;
 
 				case ON_FLUSH:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_FLUSH (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_flush(&ifman);
 					break;
 
 				case ON_END_OF_STREAM:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_END_OF_STREAM (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_end_of_stream(&ifman);
 					break;
 
 				case ON_PLAYBACK_STARTED:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_PLAYBACK_STARTED (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_playback_started(&ifman);
 					break;
 
 				case ON_PLAYBACK_PAUSED:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_PLAYBACK_PAUSED (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_playback_paused(&ifman);
 					break;
 
 				case ON_PLAYBACK_RESTARTED:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_PLAYBACK_RESTARTED (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_playback_restarted(&ifman);
 					break;
 
 				case ON_PLAYBACK_STOPPED:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_PLAYBACK_STOPPED (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_playback_stopped(&ifman);
 					break;
 
 				case ON_PLAYBACK_RATE_CHANGED:
+                    DEBUG_DVC("cbSize=%d InterfaceId=TSMF_INTERFACE_DEFAULT (0x%X) MessageId=0x%X FunctionId=ON_PLAYBACK_RATE_CHANGED (0x%X)",
+                              cbSize, InterfaceId, MessageId, FunctionId);
 					error = tsmf_ifman_on_playback_rate_changed(&ifman);
 					break;
 
@@ -284,6 +330,8 @@ static int tsmf_on_data_received(IWTSVirtualChannelCallback* pChannelCallback,
 			case RIMCALL_RELEASE:
 				/* [MS-RDPEXPS] 2.2.2.2 Interface Release (IFACE_RELEASE)
 				   This message does not require a reply. */
+                DEBUG_DVC("MessageId=0x%X FunctionId=RIMCALL_RELEASE (0x%X)",
+                          MessageId, FunctionId);
 				error = 0;
 				ifman.output_pending = 1;
 				break;
@@ -291,6 +339,8 @@ static int tsmf_on_data_received(IWTSVirtualChannelCallback* pChannelCallback,
 			case RIMCALL_QUERYINTERFACE:
 				/* [MS-RDPEXPS] 2.2.2.1.2 Query Interface Response (QI_RSP)
 				   This message is not supported in this channel. */
+                DEBUG_DVC("MessageId=0x%X FunctionId=RIMCALL_QUERYINTERFACE (0x%X)",
+                          MessageId, FunctionId);
 				error = 0;
 				break;
 		}
@@ -331,7 +381,7 @@ static int tsmf_on_close(IWTSVirtualChannelCallback* pChannelCallback)
 	TSMF_PRESENTATION* presentation;
 	TSMF_CHANNEL_CALLBACK* callback = (TSMF_CHANNEL_CALLBACK*) pChannelCallback;
 
-	DEBUG_DVC("");
+	DEBUG_DVC("tsmf on close:");
 
 	if (callback->stream_id)
 	{
@@ -357,7 +407,7 @@ static int tsmf_on_new_channel_connection(IWTSListenerCallback* pListenerCallbac
 	TSMF_CHANNEL_CALLBACK* callback;
 	TSMF_LISTENER_CALLBACK* listener_callback = (TSMF_LISTENER_CALLBACK*) pListenerCallback;
 
-	DEBUG_DVC("");
+	DEBUG_DVC("tsmf_on_new_channel_connection:");
 
 	callback = xnew(TSMF_CHANNEL_CALLBACK);
 	callback->iface.OnDataReceived = tsmf_on_data_received;
@@ -374,21 +424,20 @@ static int tsmf_plugin_initialize(IWTSPlugin* pPlugin, IWTSVirtualChannelManager
 {
 	TSMF_PLUGIN* tsmf = (TSMF_PLUGIN*) pPlugin;
 
-	DEBUG_DVC("");
+	DEBUG_DVC("tsmf_plugin_intialize:");
 
 	tsmf->listener_callback = xnew(TSMF_LISTENER_CALLBACK);
 	tsmf->listener_callback->iface.OnNewChannelConnection = tsmf_on_new_channel_connection;
 	tsmf->listener_callback->plugin = pPlugin;
 	tsmf->listener_callback->channel_mgr = pChannelMgr;
-	return pChannelMgr->CreateListener(pChannelMgr, "TSMF", 0,
-		(IWTSListenerCallback*) tsmf->listener_callback, NULL);
+	return pChannelMgr->CreateListener(pChannelMgr, "TSMF", 0, (IWTSListenerCallback*) tsmf->listener_callback, NULL);
 }
 
 static int tsmf_plugin_terminated(IWTSPlugin* pPlugin)
 {
 	TSMF_PLUGIN* tsmf = (TSMF_PLUGIN*) pPlugin;
 
-	DEBUG_DVC("");
+	DEBUG_DVC("tsmf_plugin_terminated:");
 
 	if (tsmf->listener_callback)
 		xfree(tsmf->listener_callback);
@@ -400,7 +449,8 @@ static int tsmf_plugin_terminated(IWTSPlugin* pPlugin)
 static void tsmf_process_plugin_data(IWTSPlugin* pPlugin, RDP_PLUGIN_DATA* data)
 {
 	TSMF_PLUGIN* tsmf = (TSMF_PLUGIN*) pPlugin;
-
+    DEBUG_DVC("tsmf_process_plugin_data:");
+    
 	while (data && data->size > 0)
 	{
 		if (data->data[0] && ( strcmp((char*)data->data[0], "tsmf") == 0 || strstr((char*)data->data[0], "/tsmf.") != NULL) )
@@ -416,7 +466,7 @@ static void tsmf_process_plugin_data(IWTSPlugin* pPlugin, RDP_PLUGIN_DATA* data)
 			}
 		}
 		
-		data = (RDP_PLUGIN_DATA*)(((uint8*)data) + data->size);
+		data = (RDP_PLUGIN_DATA*)(((void*)data) + data->size);
 	}
 }
 
@@ -424,7 +474,7 @@ int DVCPluginEntry(IDRDYNVC_ENTRY_POINTS* pEntryPoints)
 {
 	TSMF_PLUGIN * tsmf;
 	int error = 0;
-
+    DEBUG_DVC("tsmf:  DVCPluginEntry:");
 	tsmf = (TSMF_PLUGIN*) pEntryPoints->GetPlugin(pEntryPoints, "tsmf");
 	if (tsmf == NULL)
 	{

@@ -8,9 +8,10 @@ pushd .
 GEN='Xcode'
 
 # Build settings
-ARCH=-DCMAKE_OSX_ARCHITECTURES="${CMAKE_OSX_ARCHITECTURES:-i386;x86_64}"
-BUILDTYPE=-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE:Debug}"
+ARCH=-DCMAKE_OSX_ARCHITECTURES="${CMAKE_OSX_ARCHITECTURES:-x86_64}"
+BUILDTYPE=-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE:Debug;Release}"
 MANPAGES=-DWITH_MANPAGES="${WITHMANPAGES:NO}"
+CUPS=-DWITH_CUPS="${WITHCUPS:NO}"
 
 # Run cmake for FreeRDP and MacFreeRDP
 mkdir ${XCODE_PROJ_DIR} >/dev/null 2>&1 
@@ -36,7 +37,7 @@ else
 	case $CONFIRM in
 	y|Y|YES|yes|Yes)
 		pushd ./${XCODE_PROJ_DIR}
-		xcodebuild 
+		xcodebuild || exit 1
 		popd
 		break ;;
 	n|N|no|NO|No)
